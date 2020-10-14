@@ -310,6 +310,7 @@
 /define:CSHARP_7_3_OR_NEWER
 Assets\GameEnding.cs
 Assets\Scripts\LightFlicker.cs
+Assets\Scripts\Observer.cs
 Assets\Scripts\Outliner.cs
 Assets\Scripts\PlayerMovement.cs
 Assets\TutorialInfo\Scripts\Readme.cs
