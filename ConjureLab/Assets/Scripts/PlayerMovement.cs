@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
+    AudioSource m_AudioSource;
     Vector3 m_Movement;
     Quaternion m_Rotation = Quaternion.identity;
     Animator m_Animator;
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_AudioSource = GetComponent<AudioSource>();
         m_Animator = GetComponent<Animator>();
         m_Rigidbody = GetComponent<Rigidbody>();
     }
@@ -33,6 +35,20 @@ public class PlayerMovement : MonoBehaviour
         bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
         bool isWalking = hasHorizontalInput || hasVerticalInput;
         m_Animator.SetBool("IsWalking", isWalking);
+        
+        if (isWalking)
+        {
+            if (!m_AudioSource.isPlaying)
+            {
+                m_AudioSource.Play();
+            }
+        }
+        else
+        {
+            m_AudioSource.Stop();
+
+        }
+
 
         Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
         m_Rotation = Quaternion.LookRotation(desiredForward);
