@@ -314,3 +314,4 @@ Assets\Scripts\Observer.cs
 Assets\Scripts\Outliner.cs
 Assets\Scripts\PlayerMovement.cs
 Assets\TutorialInfo\Scripts\Readme.cs
+Assets\WaypointPatrol.cs
