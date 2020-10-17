@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     AudioSource m_AudioSource;
     Vector3 m_Movement;
     Quaternion m_Rotation = Quaternion.identity;
+    Vector3 desiredForward;
+
     Animator m_Animator;
     Rigidbody m_Rigidbody;
 
@@ -49,9 +51,8 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-
-        Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
-        m_Rotation = Quaternion.LookRotation(desiredForward);
+        m_Movement = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
+        m_Rotation = Quaternion.LookRotation(m_Movement);
     }
 
     void OnAnimatorMove()
