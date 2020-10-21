@@ -4,8 +4,8 @@ using UnityEngine;
 using Cinemachine;
 public class RotateCamera : MonoBehaviour
 {
+    [SerializeField] PlayerMovement pm;
     [SerializeField] CinemachineVirtualCamera cam;
-
     Quaternion startRotation;
     Quaternion endRotation;
     float targetRotation;
@@ -16,14 +16,17 @@ public class RotateCamera : MonoBehaviour
         startRotation = transform.rotation;
         if (direction == 1) // Rotate left
         {
-            targetRotation += transform.rotation.y + 90;
+            targetRotation += transform.rotation.y + 180;
+            
         }
         else if (direction == 0) //Rotate Right
         {
-            targetRotation -= transform.rotation.y + 90;
+            targetRotation -= transform.rotation.y + 180;
         }
+
         endRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, targetRotation, transform.rotation.eulerAngles.z);
         rotationProgress = 0;
+        pm.multiplier *= -1; //Modify input axis direction
     }
 
     void DoRotate()

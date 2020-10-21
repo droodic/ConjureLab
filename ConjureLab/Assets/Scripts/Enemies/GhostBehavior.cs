@@ -5,6 +5,7 @@ using UnityEngine;
 public class GhostBehavior : Observer
 {
     [SerializeField] WaypointPatrol patrol;
+    [SerializeField] float minDistance;
     [SerializeField] float maxDistance;
     public EnemyHolder holder;
 
@@ -49,6 +50,10 @@ public class GhostBehavior : Observer
             {
                 Debug.Log("Resuming patrol!");
                 Reset();
+            }
+            else if(nav.remainingDistance <= minDistance)
+            {
+                gameEnding.CaughtPlayer();
             }
         }
         else if (investigating)

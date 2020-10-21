@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     AudioSource m_AudioSource;
     Vector3 m_Movement;
     Quaternion m_Rotation = Quaternion.identity;
-    Vector3 desiredForward;
-
     Animator m_Animator;
     Rigidbody m_Rigidbody;
 
     [SerializeField] float turnSpeed = 20f;
 
+    public int multiplier = 1;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         m_AudioSource = GetComponent<AudioSource>();
         m_Animator = GetComponent<Animator>();
         m_Rigidbody = GetComponent<Rigidbody>();
@@ -27,8 +26,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = multiplier * Input.GetAxis("Horizontal");
+        float vertical = multiplier * Input.GetAxis("Vertical");
 
         m_Movement.Set(horizontal, 0f, vertical);
         m_Movement.Normalize();
@@ -50,8 +49,8 @@ public class PlayerMovement : MonoBehaviour
             m_AudioSource.Stop();
 
         }
-
-        m_Movement = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
+        
+        m_Movement = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f) ;
         m_Rotation = Quaternion.LookRotation(m_Movement);
     }
 

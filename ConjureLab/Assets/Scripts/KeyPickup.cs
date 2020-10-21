@@ -10,8 +10,8 @@ public class KeyPickup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gm = FindObjectOfType<GameManager>().GetComponent<GameManager>();
-        ui = FindObjectOfType<UIManager>().GetComponent<UIManager>();
+        gm = GameManager.Instance;
+        ui = UIManager.Instance;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -19,8 +19,8 @@ public class KeyPickup : MonoBehaviour
         if(other.gameObject.tag == "Player" && !gm.HasKey)
         {
             gm.HasKey = true;
-            ui.UpdateObjectiveText("Find the exit.");
-            Destroy(this);
+            //ui.UpdateObjectiveText("Find the exit.");
+            Destroy(this.gameObject);
         }
     }
 }

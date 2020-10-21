@@ -10,8 +10,12 @@ public class KeySpawner : MonoBehaviour
 
     void Start()
     {
+        SpawnRandomKey();
+    }
+
+    void SpawnRandomKey()
+    {
         int rand = Random.Range(0, keyList.Length);
         keyList[rand].SetActive(true);
-
     }
 }

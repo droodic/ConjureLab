@@ -524,11 +524,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ba83d495c3c3a46ab154892ddfce61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observer: {fileID: 1224023175}
   navMeshAgent: {fileID: 6893392255065085075}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
-  chasing: 0
 --- !u!82 &1134720863799936599
 AudioSource:
   m_ObjectHideFlags: 0
@@ -953,8 +953,11 @@ MonoBehaviour:
   gameEnding: {fileID: 0}
   inSight: 0
   patrol: {fileID: 3977384072677008040}
+  minDistance: 1
   maxDistance: 5
   holder: {fileID: 0}
+  chasing: 0
+  investigating: 0
 --- !u!1001 &8277122825445248597
 PrefabInstance:
   m_ObjectHideFlags: 0
