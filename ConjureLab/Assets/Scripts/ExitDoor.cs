@@ -9,7 +9,7 @@ public class ExitDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && GameManager.Instance.HasKey)
+        if (other.gameObject.tag == "Player" && GameManager.Instance.GetObjective("KeyPickup").objectiveCompleted)
         {
             clip.Play();
         }

@@ -7,7 +7,6 @@ public class GhostBehavior : Observer
     [SerializeField] WaypointPatrol patrol;
     [SerializeField] float minDistance;
     [SerializeField] float maxDistance;
-    public EnemyHolder holder;
 
     public bool chasing;
     public bool investigating;
@@ -17,8 +16,6 @@ public class GhostBehavior : Observer
     public override void Start()
     {
         base.Start();
-        holder = FindObjectOfType<EnemyHolder>().GetComponent<EnemyHolder>();
-        holder.EnemyList.Add(this);
     }
 
     public void Investigate(Transform target)

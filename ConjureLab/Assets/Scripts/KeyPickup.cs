@@ -7,6 +7,11 @@ public class KeyPickup : MonoBehaviour
     GameManager gm;
     UIManager ui;
 
+    private void Awake()
+    {
+        GetComponentInParent<KeySpawner>().keyList.Add(this.gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +21,10 @@ public class KeyPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player" && !gm.HasKey)
+        if(other.gameObject.tag == "Player" && !gm.GetObjective("KeyPickup").objectiveCompleted)
         {
-            gm.HasKey = true;
-            //ui.UpdateObjectiveText("Find the exit.");
+            gm.CompleteObjective(gm.GetObjective("KeyPickup"));
+        
             Destroy(this.gameObject);
         }
     }

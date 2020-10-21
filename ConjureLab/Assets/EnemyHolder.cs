@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class EnemyHolder : MonoBehaviour
 {
+
+    #region Singleton
+    private static EnemyHolder _instance = null;
+    public static EnemyHolder Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<EnemyHolder>();
+            }
+            return _instance;
+        }
+    }
+    #endregion
+
     // Start is called before the first frame update
     [SerializeField] List<Observer> enemyList = new List<Observer>();
 

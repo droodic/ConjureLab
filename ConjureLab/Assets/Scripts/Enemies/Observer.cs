@@ -7,14 +7,20 @@ public abstract class Observer : MonoBehaviour
 {
     public Transform player;
     public GameEnding gameEnding;
+    public bool inSight;
+
     protected NavMeshAgent nav;
+    protected EnemyHolder holder;
 
     bool m_IsPlayerInRange;
-    public bool inSight;
 
     public virtual void Start()
     {
         nav = GetComponentInParent<NavMeshAgent>();
+
+        //Add observer to enemy list
+        holder = EnemyHolder.Instance;
+        holder.EnemyList.Add(this);
     }
 
     void OnTriggerEnter(Collider other)
